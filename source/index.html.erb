@@ -1,0 +1,200 @@
+<% @primary_color = "#2DB5D3" %>
+<% content_for :head do %>
+<style>
+.primary-text, a, a:hover {
+	color: <%= @primary_color %>;
+}
+
+.btn-primary,
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.open .dropdown-toggle.btn-primary {
+	background-color: <%= @primary_color %>;
+	border-color: <%= @primary_color %>;
+}
+.status {
+	margin: 0 10px;
+	color: transparent;
+}
+
+.status.complete {
+	color: green;
+}
+
+.status.invalid {
+	color: red;
+}
+
+.enrollment {
+	width: 860px;
+	margin: 0 auto;
+}
+
+.enrollment .panel-title {
+	font-weight: 200;
+}
+
+.enrollment, 
+.enrollment .btn-default {
+	color: #777;
+}
+
+.enrollment .btn-primary {
+	color: #fff;
+}
+
+.enrollment .panel-default {
+	border-width: 0;
+	box-shadow: 0 0 0 0;
+}
+
+.enrollment .panel-title {
+	font-size: 18px;
+	color: <%= @primary_color %>;
+}
+
+.enrollment h1,
+.enrollment h2 {
+	text-align: center;
+	font-weight: 200;
+}
+
+.enrollment label {
+	font-weight: 200;
+}
+
+.enrollment .form-horizontal  section .row:nth-child(2n+1) {
+	background-color: #eee;
+}
+
+.enrollment .form-group {
+	padding-top: 16px;
+}
+
+.enrollment .form-group label {
+	padding-top: 7px;
+}
+
+.enrollment .form-group input {
+	//background-color: transparent;
+	//border-color: transparent;
+	box-shadow: 0 0 0 0;
+}
+
+.enrollment .btn-lg {
+	padding: 0 30px;
+	font-weight: 100;
+	letter-spacing: 1px;
+}
+
+.enrollment .btn-default {
+	color: <%= @primary_color %>;
+}
+
+.enrollment .table th {
+	text-align: center;
+}
+
+.enrollment .btn-group .btn {
+	height: 24px;
+	line-height: 1.2em;
+	padding: 0 10px;
+}
+
+.enrollment .btn {
+	border-radius: 0;
+	text-transform: lowercase;
+}
+.enrollment .caret.pull-right {
+	margin-top: 6px;
+	border-width: 8px;
+}
+
+.enrollment #register_panel .form-group {
+	margin-bottom: 0;
+	padding-top: 10px;
+}
+
+.enrollment #register_panel input.text {
+	font-size: 24px;
+	background-color: #eee;
+	font-weight: 100;
+	line-height: 1.1;
+}
+
+.enrollment input[type='checkbox'] {
+	-webkit-appearance: none;
+	position: relative;
+	border:solid 1px #a1a1a1;
+	background-color: #fff;
+	width: 16px;
+	height: 16px;
+	margin-top: 0;
+}
+
+.enrollment label + input[type='checkbox'] {
+	top: 3px;
+}
+
+.enrollment input[type='checkbox']:checked {
+	color: <%= @primary_color %>;
+	
+}
+.enrollment input[type='checkbox']:checked:after {
+	position: absolute;
+	content: "✓";
+	left: 2px;
+	top: -2px;
+}
+
+.enrollment input[type='checkbox']:focus {
+  outline: none;
+}
+
+.enrollment .table>tbody>tr>td {
+	border-top-width: 0;
+	vertical-align: center;
+	font-weight: 300;
+}
+
+.enrollment .table>thead>tr>th {
+	border-bottom-width: 0;
+	font-weight: 200;
+}
+
+.enrollment .table input[type='checkbox'] {
+	//background-color: <%= @primary_color %>;
+	//color: #fff;
+	height: 24px;
+	width: 24px;
+}
+
+.enrollment .table input[type='checkbox']:checked:after {
+	left: 3px;
+	top: -3px;
+	font-size: 24px;
+}
+
+</style>
+<% end %>
+<div class="enrollment">
+	<h1>enrollment options</h1>
+	<div class="panel-group">
+		<%= partial "product_panel" %>
+		<%= partial "extras_panel" %>
+		<%= partial "register_panel" %>
+		<%= partial "info_panel" %>
+		<%= partial "finish_panel" %>
+	</div>
+</div>
+<% content_for :javascript do %>
+<script>
+function panel_complete(selector) {
+	$(selector + " .status").addClass("complete");
+	$(selector + " .complete").removeClass("fa-times-circle-o");
+	$(selector + " .complete").addClass("fa-check-circle-o");
+}
+</script>
+<% end %>
